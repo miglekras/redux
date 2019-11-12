@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setMostPopularMovies, setGenres} from './actions';
+import {setGenres, setMostPopularMovies, setMovieGenres} from './actions';
 import {endpoints} from './config';
 
 export const getMostPopularMovies = () => (dispatch) => {
@@ -9,10 +9,17 @@ export const getMostPopularMovies = () => (dispatch) => {
             dispatch(setMostPopularMovies(data.data.results));
         });
 };
-export const getGenreMovies = () => (dispatch) => {
+export const getGenres = () => (dispatch) => {
     axios
         .get(endpoints.genres())
         .then((data) => {
-            dispatch(setGenres(data.data.results));
+            dispatch(setGenres(data.data.genres));
+        });
+};
+export const getMovieGenres = (id) => (dispatch) => {
+    axios
+        .get(endpoints.genreMovies(id))
+        .then((data) => {
+            dispatch(setMovieGenres(data.data.results));
         });
 };

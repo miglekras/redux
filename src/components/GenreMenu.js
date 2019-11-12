@@ -1,13 +1,12 @@
 import React from 'react';
 import GenreLink from './GenreLink';
 import {connect} from "react-redux";
-import {getGenreMovies} from '../thunks';
-import {setGenres} from '../actions';
+import {getGenres} from '../thunks';
 
 
 class GenreMenu extends React.Component {
     componentDidMount() {
-        this.props.onGetGenreMovies();
+        this.props.onGetGenres();
 
     }
 
@@ -31,8 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onGetGenreMovies: () => dispatch(getGenreMovies()),
-    // onSetGenreMovies: (genreList) => dispatch(setGenreMovies(genreList)),
+    onGetGenres: () => dispatch(getGenres()),
 });
 
 export default connect(

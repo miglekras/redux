@@ -1,30 +1,18 @@
 import React from 'react';
-import {getGenreMovies} from "../thunks";
 import {connect} from "react-redux";
+import {getMovieGenres} from "../thunks";
 
 
 class GenreLink extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //
-    //     this.state = {
-    //         // genreId: props.id,
-    //         // title: props.genre,
-    //         // filterFilms: props.filterFilms,
-    //     };
-    //     this.handleClick = this.handleClick.bind(this);
-    // }
-    //
-    // handleClick() {
-    //     this.state.filterFilms(this.state.genreId);
-    // }
-
 
     render() {
         return (
-            <button className={this.props.selected ? 'selected' : null} onClick={{/*this.handleClick*/}}>
-                genre
+            <button
+                onClick={() => {
+                    this.props.onGetMovieGenres(this.props.id)
+                }}>
+                {this.props.genre}
             </button>)
     }
 
@@ -32,5 +20,14 @@ class GenreLink extends React.Component {
 }
 
 
+const mapStateToProps = () => ({});
 
-export default connect()(GenreLink);
+const mapDispatchToProps = (dispatch) => ({
+    onGetMovieGenres: (id) => dispatch(getMovieGenres(id)),
+
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(GenreLink);

@@ -1,28 +1,31 @@
 import React from 'react';
+import {dislikeMovie, likeMovie} from "../actions";
+import {connect} from "react-redux";
 
 class LikeButton extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            likeFilm: props.likeFilm,
-            filmId: props.filmId,
-        };
-        this.handleLikeClick = this.handleLikeClick.bind(this);
-    }
-
-    handleLikeClick() {
-        this.state.likeFilm(this.state.filmId);
-    }
 
     render() {
+        const hearted = this.props.hearted.includes(this.props.id);
         return (
             <button>
-                <i className={this.props.liked ? 'fa fa-heart' : 'fa fa-heart-o'} onClick={this.handleLikeClick} > </i>
+                <i className={hearted ? 'fa fa-heart' : 'fa fa-heart-o'}
+                   onClick={() => hearted ? this.props.onDislikeMovie(this.props.id) : this.props.onLikeMovie(this.props.id)}> </i>
             </button>
         )
 
     }
 }
-export default LikeButton;
+
+const mapStateToProps = (state) => ({
+    hearted: state.heartedCards.heartedMovies,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onLikeMovie: (id) => dispatch(likeMovie(id)),
+    onDislikeMovie: (id) => dispatch(dislikeMovie(id)),
+});
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(LikeButton);

@@ -5,7 +5,7 @@ import {applyMiddleware, createStore} from 'redux';
 import './index.css';
 import {logger} from 'redux-logger';
 import Thunk from 'redux-thunk';
-import {rootReducer} from './reducer';
+import {rootReducer} from './reducers/reducer';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 

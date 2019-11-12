@@ -17,3 +17,15 @@ export const likeFilm = (filmLiked) => ({
     type: 'likeFilm',
     filmLiked,
 });
+export const setMovieGenres = (list) => ({
+    type: 'setMovieGenres',
+    list,
+});
+export const likeMovie = (id) => ({
+    type: 'likeMovie',
+    id,
+});
+export const dislikeMovie = (id) => ({
+    type: 'dislikeMovie',
+    id,
+});

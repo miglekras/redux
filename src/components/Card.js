@@ -13,8 +13,6 @@ class Card extends React.Component {
     render() {
         const {showDescription} = this.state;
         const {title, backgroundImage, date, rating, votes, description} = this.props;
-        // const hearted = this.props.hearted.includes(this.props.id);
-
         return (
             <div className="card">
                 <div

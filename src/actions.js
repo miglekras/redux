@@ -13,10 +13,6 @@ export const setGenres = (genreList) => ({
     genreList,
 });
 
-export const likeFilm = (filmLiked) => ({
-    type: 'likeFilm',
-    filmLiked,
-});
 export const setMovieGenres = (list) => ({
     type: 'setMovieGenres',
     list,

@@ -53,13 +53,10 @@ const mapStateToProps = (state) => ({
     showCards: state.componentState.showCards,
     mostPopularMovies: state.cards.mostPopular,
     genres: state.genreFilms.moviesGenres,
-
 });
 const mapDispatchToProps = (dispatch) => ({
     onToggleCards: (shouldShow) => dispatch(toggleCards(shouldShow)),
     onGetMostPopularMovies: () => dispatch(getMostPopularMovies()),
-
-
 });
 
 export default connect(
